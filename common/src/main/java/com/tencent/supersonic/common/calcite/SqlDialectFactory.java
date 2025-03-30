@@ -5,6 +5,7 @@ import org.apache.calcite.avatica.util.Casing;
 import org.apache.calcite.sql.SqlDialect;
 import org.apache.calcite.sql.SqlDialect.Context;
 import org.apache.calcite.sql.SqlDialect.DatabaseProduct;
+import org.apache.calcite.sql.dialect.MssqlSqlDialect;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +37,7 @@ public class SqlDialectFactory {
                     .withLiteralQuoteString("'").withIdentifierQuoteString("`")
                     .withLiteralEscapedQuoteString("''").withUnquotedCasing(Casing.UNCHANGED)
                     .withQuotedCasing(Casing.UNCHANGED).withCaseSensitive(false);
+    public static final Context SQLSERVER_CONTEXT = MssqlSqlDialect.DEFAULT_CONTEXT;
     private static Map<EngineType, SemanticSqlDialect> sqlDialectMap;
 
     static {
@@ -49,6 +51,7 @@ public class SqlDialectFactory {
         sqlDialectMap.put(EngineType.KYUUBI, new SemanticSqlDialect(KYUUBI_CONTEXT));
         sqlDialectMap.put(EngineType.PRESTO, new SemanticSqlDialect(PRESTO_CONTEXT));
         sqlDialectMap.put(EngineType.TRINO, new SemanticSqlDialect(PRESTO_CONTEXT));
+        sqlDialectMap.put(EngineType.SQLSERVER, new SemanticSqlDialect(SQLSERVER_CONTEXT));
     }
 
     public static SemanticSqlDialect getSqlDialect(EngineType engineType) {

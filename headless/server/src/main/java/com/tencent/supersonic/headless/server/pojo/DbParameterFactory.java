@@ -21,6 +21,7 @@ public class DbParameterFactory {
         parametersBuilder.put(EngineType.PRESTO.getName(), new PrestoParametersBuilder());
         parametersBuilder.put(EngineType.TRINO.getName(), new TrinoParametersBuilder());
         parametersBuilder.put(EngineType.OTHER.getName(), new OtherParametersBuilder());
+        parametersBuilder.put(EngineType.SQLSERVER.getName(), new SqlserverParametersBuilder());
     }
 
     public static DbParametersBuilder get(String engineType) {

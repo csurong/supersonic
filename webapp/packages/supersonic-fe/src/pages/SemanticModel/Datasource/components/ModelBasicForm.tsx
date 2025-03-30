@@ -56,7 +56,7 @@ const ModelBasicForm: React.FC<Props> = ({
 
   const onDatabaseSelect = (databaseId: number, type: string) => {
     setLoading(true);
-    if (type === 'STARROCKS' || type === 'KYUUBI' || type === 'PRESTO' || type === 'TRINO') {
+    if (type === 'STARROCKS' || type === 'KYUUBI' || type === 'PRESTO' || type === 'TRINO' || type === 'SQLSERVER') {
       queryCatalogList(databaseId);
       setCatalogSelectOpen(true);
       setDbNameList([]);
